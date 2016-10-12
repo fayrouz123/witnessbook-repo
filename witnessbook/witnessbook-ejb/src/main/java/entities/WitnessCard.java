@@ -37,12 +37,14 @@ public class WitnessCard implements Serializable {
 	public void setProductowner(ProductOwner productowner) {
 		this.productowner = productowner;
 	}
+	
 	public List<Report> getReports() {
 		return reports;
 	}
 	public void setReports(List<Report> reports) {
 		this.reports = reports;
 	}
+	
 	public List<Witness> getWitnesses() {
 		return witnesses;
 	}

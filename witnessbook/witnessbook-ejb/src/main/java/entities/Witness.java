@@ -20,7 +20,18 @@ public class Witness extends User implements Serializable {
 	
 	private Double FidelityPoints;
 	private List<WitnessCard> witnesscards;
+	private List<Post> posts;
+
 	
+	@OneToMany
+	public List<Post> getPosts() {
+		return posts;
+	}
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+	@OneToMany
+
 	public List<WitnessCard> getWitnesscards() {
 		return witnesscards;
 	}

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -21,6 +23,7 @@ public class Event implements Serializable {
 	private Date DateEvent;
 	private String PlaceEvent;
 	private String DescriptionEvent;
+	private List<Moderator>moderators;
 	private static final long serialVersionUID = 1L;
 
 	public Event() {

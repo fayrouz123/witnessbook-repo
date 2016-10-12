@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -18,8 +20,24 @@ public class Competition implements Serializable {
 	@Id
 	private Integer IdCompetition;
 	private String DescriptionCompetition;
+	public List<Moderator> getModerators() {
+		return moderators;
+	}
+	public void setModerators(List<Moderator> moderators) {
+		this.moderators = moderators;
+	}
+	public List<Witness> getWitnessess() {
+		return witnessess;
+	}
+	public void setWitnessess(List<Witness> witnessess) {
+		this.witnessess = witnessess;
+	}
 	private Date StartDateCompetition;
 	private Date EndDateCompetition;
+	private List<Moderator>moderators;
+	private List<Witness>witnessess;
+
+	
 	private static final long serialVersionUID = 1L;
 
 	public Competition() {
