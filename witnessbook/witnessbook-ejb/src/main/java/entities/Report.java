@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.awt.List;
 import java.lang.String;
 import java.util.Date;
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class Report implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue
 	private String ReportId;
 	private String ReportReason;
 	private String ReportDescription;
