@@ -1,4 +1,4 @@
-package service;
+package Service;
 
 import java.util.List;
 
@@ -47,15 +47,13 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 	public User findUserById(Integer idUser) {
 		return entityManager.find(User.class, idUser);
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAllUsers() {
-		String jpql="SELECT u FROM User u";
-		Query query=entityManager.createQuery(jpql);
+		String jpql = "SELECT u FROM User u";
+		Query query = entityManager.createQuery(jpql);
 		return query.getResultList();
 	}
-	
 
 }

@@ -1,4 +1,4 @@
-package service;
+package Service;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,16 +14,17 @@ import entities.WitnessCard;
 public class WitnessCardService implements WitnessCardServiceRemote, WitnessCardServiceLocal {
 
 	@PersistenceContext
-	
+
 	EntityManager em;
-   
-    public WitnessCardService() {
-        // TODO Auto-generated constructor stub
-    }
+
+	public WitnessCardService() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void Addwcs(WitnessCard wc) {
 		em.persist(wc);
-		
+
 	}
 
 }

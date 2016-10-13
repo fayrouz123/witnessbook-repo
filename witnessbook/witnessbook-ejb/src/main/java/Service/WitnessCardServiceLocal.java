@@ -1,4 +1,4 @@
-package service;
+package Service;
 
 import javax.ejb.Local;
 
