@@ -1,4 +1,4 @@
-package service;
+package Service;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
