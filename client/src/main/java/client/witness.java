@@ -1,14 +1,10 @@
 package client;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
-import Service.WitnessCardServiceRemote;
-import entities.WitnessCard;
+
 
 public class witness {
-	public static void main(String[] args) throws NamingException {
+	 /*public static void main(String[] args) throws NamingException {
 		Context context = new InitialContext();
 		//WitnessCardServiceRemote wsr = (WitnessCardServiceRemote) context
 				//.lookup("witnessbook-ear/witnessbook-ejb/WitnessCardService!Service.WitnessCardServiceRemote");
@@ -19,7 +15,8 @@ public class witness {
 		wc.setCardDescription("good");
 		wc.setCardFile("scr:\\...");
 		//wsr.Addwcs(wc);
-
+*/
+	ceci est un test haha ;
 	}
 
-}
+
