@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.List;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +19,7 @@ public class Category implements Serializable {
 	private Integer CategoryId;
 	private String CategoryName;
 	private static final long serialVersionUID = 1L;
+	private List<WitnessCard> WitnessCards;
 
 	public Category() {
 		super();
@@ -35,6 +37,13 @@ public class Category implements Serializable {
 
 	public void setCategoryName(String CategoryName) {
 		this.CategoryName = CategoryName;
+	}
+	@OneToMany
+	public List<WitnessCard> getWitnessCards() {
+		return WitnessCards;
+	}
+	public void setWitnessCards(List<WitnessCard> witnessCards) {
+		WitnessCards = witnessCards;
 	}
 	public Category(Integer categoryId, String categoryName) {
 		super();
