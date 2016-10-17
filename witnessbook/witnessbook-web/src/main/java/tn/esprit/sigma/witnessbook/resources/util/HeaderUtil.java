@@ -1,8 +1,7 @@
 package tn.esprit.sigma.witnessbook.resources.util;
 
 import javax.ws.rs.core.Response.ResponseBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 /**
  * Utility class for HTTP headers creation.
@@ -10,7 +9,6 @@ import org.slf4j.LoggerFactory;
  */
 public class HeaderUtil {
 
- //   private static final Logger log = LoggerFactory.getLogger(HeaderUtil.class);
 
     public static ResponseBuilder createAlert(ResponseBuilder builder, String message, String param) {
         builder.header("X-app-alert", message);

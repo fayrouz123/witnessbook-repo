@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Report;
 import tn.esprit.sigma.witnessbook.service.ReportService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,8 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Report.
  */
 @Path("/api/report")
-@Secured
 public class ReportController {
 
-    private final Logger log = LoggerFactory.getLogger(ReportController.class);
 
     @Inject
     private ReportService reportService;
@@ -41,7 +36,6 @@ public class ReportController {
      */
     @POST
     public Response createReport(Report report) throws URISyntaxException {
-        log.debug("REST request to save Report : {}", report);
         reportService.create(report);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/report/" + report.getId())),
                 "report", report.getId().toString())
@@ -59,7 +53,6 @@ public class ReportController {
      */
     @PUT
     public Response updateReport(Report report) throws URISyntaxException {
-        log.debug("REST request to update Report : {}", report);
         reportService.edit(report);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "report", report.getId().toString())
                 .entity(report).build();
@@ -78,7 +71,6 @@ public class ReportController {
      */
     @GET
     public List<Report> getAllReports() {
-        log.debug("REST request to get all Reports");
         List<Report> reports = reportService.findAll();
         return reports;
     }
@@ -93,7 +85,6 @@ public class ReportController {
     @Path("/{id}")
     @GET
     public Response getReport(@PathParam("id") Integer id) {
-        log.debug("REST request to get Report : {}", id);
         Report report = reportService.find(id);
         return Optional.ofNullable(report)
                 .map(result -> Response.status(Response.Status.OK).entity(report).build())
@@ -109,7 +100,6 @@ public class ReportController {
     @Path("/{id}")
     @DELETE
     public Response removeReport(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Report : {}", id);
         reportService.remove(reportService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "report", id.toString()).build();
     }

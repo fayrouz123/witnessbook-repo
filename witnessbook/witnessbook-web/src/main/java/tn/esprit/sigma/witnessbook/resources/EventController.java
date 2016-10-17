@@ -3,9 +3,7 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Event;
 import tn.esprit.sigma.witnessbook.service.EventService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +21,8 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Event.
  */
 @Path("/api/event")
-@Secured
 public class EventController {
 
-    private final Logger log = LoggerFactory.getLogger(EventController.class);
 
     @Inject
     private EventService eventService;
@@ -41,7 +37,6 @@ public class EventController {
      */
     @POST
     public Response createEvent(Event event) throws URISyntaxException {
-        log.debug("REST request to save Event : {}", event);
         eventService.create(event);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/event/" + event.getId())),
                 "event", event.getId().toString())
@@ -59,7 +54,6 @@ public class EventController {
      */
     @PUT
     public Response updateEvent(Event event) throws URISyntaxException {
-        log.debug("REST request to update Event : {}", event);
         eventService.edit(event);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "event", event.getId().toString())
                 .entity(event).build();
@@ -78,7 +72,6 @@ public class EventController {
      */
     @GET
     public List<Event> getAllEvents() {
-        log.debug("REST request to get all Events");
         List<Event> events = eventService.findAll();
         return events;
     }
@@ -93,7 +86,6 @@ public class EventController {
     @Path("/{id}")
     @GET
     public Response getEvent(@PathParam("id") Integer id) {
-        log.debug("REST request to get Event : {}", id);
         Event event = eventService.find(id);
         return Optional.ofNullable(event)
                 .map(result -> Response.status(Response.Status.OK).entity(event).build())
@@ -109,7 +101,6 @@ public class EventController {
     @Path("/{id}")
     @DELETE
     public Response removeEvent(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Event : {}", id);
         eventService.remove(eventService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "event", id.toString()).build();
     }

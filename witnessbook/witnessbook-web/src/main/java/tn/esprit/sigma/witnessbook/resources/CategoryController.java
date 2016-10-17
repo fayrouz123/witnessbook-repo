@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Category;
 import tn.esprit.sigma.witnessbook.service.CategoryService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,9 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Category.
  */
 @Path("/api/category")
-@Secured
+
 public class CategoryController {
 
-    private final Logger log = LoggerFactory.getLogger(CategoryController.class);
 
     @Inject
     private CategoryService categoryService;
@@ -42,7 +38,6 @@ public class CategoryController {
      */
     @POST
     public Response createCategory(Category category) throws URISyntaxException {
-        log.debug("REST request to save Category : {}", category);
         categoryService.create(category);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/category/" + category.getId())),
                 "category", category.getId().toString())
@@ -61,7 +56,6 @@ public class CategoryController {
      */
     @PUT
     public Response updateCategory(Category category) throws URISyntaxException {
-        log.debug("REST request to update Category : {}", category);
         categoryService.edit(category);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "category", category.getId().toString())
                 .entity(category).build();
@@ -80,7 +74,6 @@ public class CategoryController {
      */
     @GET
     public List<Category> getAllCategories() {
-        log.debug("REST request to get all Categories");
         List<Category> categories = categoryService.findAll();
         return categories;
     }
@@ -95,7 +88,6 @@ public class CategoryController {
     @Path("/{id}")
     @GET
     public Response getCategory(@PathParam("id") Integer id) {
-        log.debug("REST request to get Category : {}", id);
         Category category = categoryService.find(id);
         return Optional.ofNullable(category)
                 .map(result -> Response.status(Response.Status.OK).entity(category).build())
@@ -111,7 +103,6 @@ public class CategoryController {
     @Path("/{id}")
     @DELETE
     public Response removeCategory(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Category : {}", id);
         categoryService.remove(categoryService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "category", id.toString()).build();
     }

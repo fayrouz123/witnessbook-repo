@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Challenge;
 import tn.esprit.sigma.witnessbook.service.ChallengeService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,8 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Challenge.
  */
 @Path("/api/challenge")
-@Secured
 public class ChallengeController {
 
-    private final Logger log = LoggerFactory.getLogger(ChallengeController.class);
 
     @Inject
     private ChallengeService challengeService;
@@ -42,7 +37,6 @@ public class ChallengeController {
      */
     @POST
     public Response createChallenge(Challenge challenge) throws URISyntaxException {
-        log.debug("REST request to save Challenge : {}", challenge);
         challengeService.create(challenge);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/challenge/" + challenge.getId())),
                 "challenge", challenge.getId().toString())
@@ -61,7 +55,6 @@ public class ChallengeController {
      */
     @PUT
     public Response updateChallenge(Challenge challenge) throws URISyntaxException {
-        log.debug("REST request to update Challenge : {}", challenge);
         challengeService.edit(challenge);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "challenge", challenge.getId().toString())
                 .entity(challenge).build();
@@ -80,7 +73,6 @@ public class ChallengeController {
      */
     @GET
     public List<Challenge> getAllChallenges() {
-        log.debug("REST request to get all Challenges");
         List<Challenge> challenges = challengeService.findAll();
         return challenges;
     }
@@ -95,7 +87,6 @@ public class ChallengeController {
     @Path("/{id}")
     @GET
     public Response getChallenge(@PathParam("id") Integer id) {
-        log.debug("REST request to get Challenge : {}", id);
         Challenge challenge = challengeService.find(id);
         return Optional.ofNullable(challenge)
                 .map(result -> Response.status(Response.Status.OK).entity(challenge).build())
@@ -111,7 +102,6 @@ public class ChallengeController {
     @Path("/{id}")
     @DELETE
     public Response removeChallenge(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Challenge : {}", id);
         challengeService.remove(challengeService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "challenge", id.toString()).build();
     }

@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Notification;
 import tn.esprit.sigma.witnessbook.service.NotificationService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,9 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Notification.
  */
 @Path("/api/notification")
-@Secured
+
 public class NotificationController {
 
-    private final Logger log = LoggerFactory.getLogger(NotificationController.class);
 
     @Inject
     private NotificationService notificationService;
@@ -42,7 +38,6 @@ public class NotificationController {
      */
     @POST
     public Response createNotification(Notification notification) throws URISyntaxException {
-        log.debug("REST request to save Notification : {}", notification);
         notificationService.create(notification);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/notification/" + notification.getId())),
                 "notification", notification.getId().toString())
@@ -61,7 +56,6 @@ public class NotificationController {
      */
     @PUT
     public Response updateNotification(Notification notification) throws URISyntaxException {
-        log.debug("REST request to update Notification : {}", notification);
         notificationService.edit(notification);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "notification", notification.getId().toString())
                 .entity(notification).build();
@@ -80,7 +74,6 @@ public class NotificationController {
      */
     @GET
     public List<Notification> getAllNotifications() {
-        log.debug("REST request to get all Notifications");
         List<Notification> notifications = notificationService.findAll();
         return notifications;
     }
@@ -95,7 +88,6 @@ public class NotificationController {
     @Path("/{id}")
     @GET
     public Response getNotification(@PathParam("id") Integer id) {
-        log.debug("REST request to get Notification : {}", id);
         Notification notification = notificationService.find(id);
         return Optional.ofNullable(notification)
                 .map(result -> Response.status(Response.Status.OK).entity(notification).build())
@@ -111,7 +103,6 @@ public class NotificationController {
     @Path("/{id}")
     @DELETE
     public Response removeNotification(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Notification : {}", id);
         notificationService.remove(notificationService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "notification", id.toString()).build();
     }

@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Post;
 import tn.esprit.sigma.witnessbook.service.PostService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,9 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Post.
  */
 @Path("/api/post")
-@Secured
+
 public class PostController {
 
-    private final Logger log = LoggerFactory.getLogger(PostController.class);
 
     @Inject
     private PostService postService;
@@ -41,7 +37,6 @@ public class PostController {
      */
     @POST
     public Response createPost(Post post) throws URISyntaxException {
-        log.debug("REST request to save Post : {}", post);
         postService.create(post);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/post/" + post.getId())),
                 "post", post.getId().toString())
@@ -59,7 +54,6 @@ public class PostController {
      */
     @PUT
     public Response updatePost(Post post) throws URISyntaxException {
-        log.debug("REST request to update Post : {}", post);
         postService.edit(post);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "post", post.getId().toString())
                 .entity(post).build();
@@ -78,7 +72,6 @@ public class PostController {
      */
     @GET
     public List<Post> getAllPosts() {
-        log.debug("REST request to get all Posts");
         List<Post> posts = postService.findAll();
         return posts;
     }
@@ -93,7 +86,6 @@ public class PostController {
     @Path("/{id}")
     @GET
     public Response getPost(@PathParam("id") Integer id) {
-        log.debug("REST request to get Post : {}", id);
         Post post = postService.find(id);
         return Optional.ofNullable(post)
                 .map(result -> Response.status(Response.Status.OK).entity(post).build())
@@ -109,7 +101,6 @@ public class PostController {
     @Path("/{id}")
     @DELETE
     public Response removePost(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Post : {}", id);
         postService.remove(postService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "post", id.toString()).build();
     }

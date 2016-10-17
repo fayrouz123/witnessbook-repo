@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
 import tn.esprit.sigma.witnessbook.service.WitnessCardService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,8 @@ import javax.ws.rs.core.Response;
  * REST controller for managing WitnessCard.
  */
 @Path("/api/witness-card")
-@Secured
 public class WitnessCardController {
 
-    private final Logger log = LoggerFactory.getLogger(WitnessCardController.class);
 
     @Inject
     private WitnessCardService witnessCardService;
@@ -42,7 +37,6 @@ public class WitnessCardController {
      */
     @POST
     public Response createWitnessCard(WitnessCard witnessCard) throws URISyntaxException {
-        log.debug("REST request to save WitnessCard : {}", witnessCard);
         witnessCardService.create(witnessCard);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/witness-card/" + witnessCard.getId())),
                 "witnessCard", witnessCard.getId().toString())
@@ -61,7 +55,6 @@ public class WitnessCardController {
      */
     @PUT
     public Response updateWitnessCard(WitnessCard witnessCard) throws URISyntaxException {
-        log.debug("REST request to update WitnessCard : {}", witnessCard);
         witnessCardService.edit(witnessCard);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "witnessCard", witnessCard.getId().toString())
                 .entity(witnessCard).build();
@@ -80,7 +73,6 @@ public class WitnessCardController {
      */
     @GET
     public List<WitnessCard> getAllWitnessCards() {
-        log.debug("REST request to get all WitnessCards");
         List<WitnessCard> witnessCards = witnessCardService.findAll();
         return witnessCards;
     }
@@ -95,7 +87,6 @@ public class WitnessCardController {
     @Path("/{id}")
     @GET
     public Response getWitnessCard(@PathParam("id") Integer id) {
-        log.debug("REST request to get WitnessCard : {}", id);
         WitnessCard witnessCard = witnessCardService.find(id);
         return Optional.ofNullable(witnessCard)
                 .map(result -> Response.status(Response.Status.OK).entity(witnessCard).build())
@@ -111,7 +102,6 @@ public class WitnessCardController {
     @Path("/{id}")
     @DELETE
     public Response removeWitnessCard(@PathParam("id") Integer id) {
-        log.debug("REST request to delete WitnessCard : {}", id);
         witnessCardService.remove(witnessCardService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "witnessCard", id.toString()).build();
     }

@@ -10,10 +10,7 @@ import java.util.Set;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import javax.ws.rs.core.Application;
 
-/**
- *
- * @author omarm
- */
+
 @javax.ws.rs.ApplicationPath("resources")
 public class ApplicationConfig extends Application {
 

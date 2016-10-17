@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Witness;
 import tn.esprit.sigma.witnessbook.service.WitnessService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,8 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Witness.
  */
 @Path("/api/witness")
-@Secured
 public class WitnessController {
 
-    private final Logger log = LoggerFactory.getLogger(WitnessController.class);
 
     @Inject
     private WitnessService witnessService;
@@ -42,7 +37,6 @@ public class WitnessController {
      */
     @POST
     public Response createWitness(Witness witness) throws URISyntaxException {
-        log.debug("REST request to save Witness : {}", witness);
         witnessService.create(witness);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/witness/" + witness.getId())),
                 "witness", witness.getId().toString())
@@ -61,7 +55,6 @@ public class WitnessController {
      */
     @PUT
     public Response updateWitness(Witness witness) throws URISyntaxException {
-        log.debug("REST request to update Witness : {}", witness);
         witnessService.edit(witness);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "witness", witness.getId().toString())
                 .entity(witness).build();
@@ -80,7 +73,6 @@ public class WitnessController {
      */
     @GET
     public List<Witness> getAllWitnesses() {
-        log.debug("REST request to get all Witnesses");
         List<Witness> witnesses = witnessService.findAll();
         return witnesses;
     }
@@ -95,7 +87,6 @@ public class WitnessController {
     @Path("/{id}")
     @GET
     public Response getWitness(@PathParam("id") Integer id) {
-        log.debug("REST request to get Witness : {}", id);
         Witness witness = witnessService.find(id);
         return Optional.ofNullable(witness)
                 .map(result -> Response.status(Response.Status.OK).entity(witness).build())
@@ -111,7 +102,6 @@ public class WitnessController {
     @Path("/{id}")
     @DELETE
     public Response removeWitness(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Witness : {}", id);
         witnessService.remove(witnessService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "witness", id.toString()).build();
     }

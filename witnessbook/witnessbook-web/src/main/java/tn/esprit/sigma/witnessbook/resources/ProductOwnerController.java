@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.ProductOwner;
 import tn.esprit.sigma.witnessbook.service.ProductOwnerService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,9 @@ import javax.ws.rs.core.Response;
  * REST controller for managing ProductOwner.
  */
 @Path("/api/product-owner")
-@Secured
+
 public class ProductOwnerController {
 
-    private final Logger log = LoggerFactory.getLogger(ProductOwnerController.class);
 
     @Inject
     private ProductOwnerService productOwnerService;
@@ -42,7 +38,6 @@ public class ProductOwnerController {
      */
     @POST
     public Response createProductOwner(ProductOwner productOwner) throws URISyntaxException {
-        log.debug("REST request to save ProductOwner : {}", productOwner);
         productOwnerService.create(productOwner);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/product-owner/" + productOwner.getId())),
                 "productOwner", productOwner.getId().toString())
@@ -61,7 +56,6 @@ public class ProductOwnerController {
      */
     @PUT
     public Response updateProductOwner(ProductOwner productOwner) throws URISyntaxException {
-        log.debug("REST request to update ProductOwner : {}", productOwner);
         productOwnerService.edit(productOwner);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "productOwner", productOwner.getId().toString())
                 .entity(productOwner).build();
@@ -80,7 +74,6 @@ public class ProductOwnerController {
      */
     @GET
     public List<ProductOwner> getAllProductOwners() {
-        log.debug("REST request to get all ProductOwners");
         List<ProductOwner> productOwners = productOwnerService.findAll();
         return productOwners;
     }
@@ -95,7 +88,6 @@ public class ProductOwnerController {
     @Path("/{id}")
     @GET
     public Response getProductOwner(@PathParam("id") Integer id) {
-        log.debug("REST request to get ProductOwner : {}", id);
         ProductOwner productOwner = productOwnerService.find(id);
         return Optional.ofNullable(productOwner)
                 .map(result -> Response.status(Response.Status.OK).entity(productOwner).build())
@@ -111,7 +103,6 @@ public class ProductOwnerController {
     @Path("/{id}")
     @DELETE
     public Response removeProductOwner(@PathParam("id") Integer id) {
-        log.debug("REST request to delete ProductOwner : {}", id);
         productOwnerService.remove(productOwnerService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "productOwner", id.toString()).build();
     }

@@ -3,9 +3,6 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Moderator;
 import tn.esprit.sigma.witnessbook.service.ModeratorService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import tn.esprit.sigma.witnessbook.security.Secured;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,10 +20,9 @@ import javax.ws.rs.core.Response;
  * REST controller for managing Moderator.
  */
 @Path("/api/moderator")
-@Secured
+
 public class ModeratorController {
 
-    private final Logger log = LoggerFactory.getLogger(ModeratorController.class);
 
     @Inject
     private ModeratorService moderatorService;
@@ -42,7 +38,6 @@ public class ModeratorController {
      */
     @POST
     public Response createModerator(Moderator moderator) throws URISyntaxException {
-        log.debug("REST request to save Moderator : {}", moderator);
         moderatorService.create(moderator);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/moderator/" + moderator.getId())),
                 "moderator", moderator.getId().toString())
@@ -61,7 +56,6 @@ public class ModeratorController {
      */
     @PUT
     public Response updateModerator(Moderator moderator) throws URISyntaxException {
-        log.debug("REST request to update Moderator : {}", moderator);
         moderatorService.edit(moderator);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "moderator", moderator.getId().toString())
                 .entity(moderator).build();
@@ -80,7 +74,6 @@ public class ModeratorController {
      */
     @GET
     public List<Moderator> getAllModerators() {
-        log.debug("REST request to get all Moderators");
         List<Moderator> moderators = moderatorService.findAll();
         return moderators;
     }
@@ -95,7 +88,6 @@ public class ModeratorController {
     @Path("/{id}")
     @GET
     public Response getModerator(@PathParam("id") Integer id) {
-        log.debug("REST request to get Moderator : {}", id);
         Moderator moderator = moderatorService.find(id);
         return Optional.ofNullable(moderator)
                 .map(result -> Response.status(Response.Status.OK).entity(moderator).build())
@@ -111,7 +103,6 @@ public class ModeratorController {
     @Path("/{id}")
     @DELETE
     public Response removeModerator(@PathParam("id") Integer id) {
-        log.debug("REST request to delete Moderator : {}", id);
         moderatorService.remove(moderatorService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "moderator", id.toString()).build();
     }
