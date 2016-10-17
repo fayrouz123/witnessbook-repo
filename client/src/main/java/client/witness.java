@@ -16,7 +16,6 @@ public class witness {
 		wc.setCardFile("scr:\\...");
 		//wsr.Addwcs(wc);
 */
-	ceci est un test haha ;
 	}
 
 
