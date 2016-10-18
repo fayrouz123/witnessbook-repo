@@ -3,8 +3,9 @@ package tn.esprit.sigma.witnessbook.interfaces;
 import java.util.List;
 import java.util.Locale.Category;
 
-import tn.esprit.sigma.witnessbook.entities.Post;
+import javax.ejb.Local;
 
+@Local
 public interface ICategoryServiceLocal {
 	void create(Category entity);
 	 Category edit(Category entity);

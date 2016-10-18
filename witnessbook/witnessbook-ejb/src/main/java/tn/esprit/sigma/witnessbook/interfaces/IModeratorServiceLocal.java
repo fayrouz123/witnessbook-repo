@@ -6,7 +6,7 @@ import javax.ejb.Local;
 
 import tn.esprit.sigma.witnessbook.entities.Moderator;
 @Local
-public interface IModeratorService {
+public interface IModeratorServiceLocal {
 	void create(Moderator entity);
 	Moderator edit(Moderator entity);
 	 void remove(Moderator entity);

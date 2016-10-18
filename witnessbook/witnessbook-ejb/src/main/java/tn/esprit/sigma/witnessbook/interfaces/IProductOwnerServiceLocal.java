@@ -2,8 +2,10 @@ package tn.esprit.sigma.witnessbook.interfaces;
 
 import java.util.List;
 
-import tn.esprit.sigma.witnessbook.entities.ProductOwner;
+import javax.ejb.Local;
 
+import tn.esprit.sigma.witnessbook.entities.ProductOwner;
+@Local
 public interface IProductOwnerServiceLocal {
 	void create(ProductOwner entity);
 	ProductOwner edit(ProductOwner entity);

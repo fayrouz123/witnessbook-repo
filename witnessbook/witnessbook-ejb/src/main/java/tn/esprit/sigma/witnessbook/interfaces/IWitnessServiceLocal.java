@@ -2,8 +2,10 @@ package tn.esprit.sigma.witnessbook.interfaces;
 
 import java.util.List;
 
-import tn.esprit.sigma.witnessbook.entities.Witness;
+import javax.ejb.Local;
 
+import tn.esprit.sigma.witnessbook.entities.Witness;
+@Local
 public interface IWitnessServiceLocal {
 	void create(Witness entity);
 	 Witness edit(Witness entity);

@@ -8,7 +8,7 @@ import tn.esprit.sigma.witnessbook.entities.Notification;
 
 
 @Local
-public interface INotificationService {
+public interface INotificationServiceLocal {
 	void create(Notification entity);
 	Notification edit(Notification entity);
 	 void remove(Notification entity);

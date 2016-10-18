@@ -2,9 +2,10 @@ package tn.esprit.sigma.witnessbook.interfaces;
 
 import java.util.List;
 
+import javax.ejb.Local;
 
 import tn.esprit.sigma.witnessbook.entities.Users;
-
+@Local
 public interface IUserServiceLocal {
 	void create(Users entity);
 	 Users edit(Users entity);

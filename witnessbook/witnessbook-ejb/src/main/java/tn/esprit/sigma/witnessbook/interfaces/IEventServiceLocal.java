@@ -7,7 +7,7 @@ import javax.ejb.Local;
 import tn.esprit.sigma.witnessbook.entities.Event;
 
 @Local
-public interface IEventService {
+public interface IEventServiceLocal {
 	void create(Event entity);
 	Event edit(Event entity);
 	 void remove(Event entity);
