@@ -30,25 +30,25 @@ public class WitnessCard implements Serializable {
     
     private String attachement;
 
-    @ManyToOne(targetEntity = ProductOwner.class)
+    @ManyToOne
     private ProductOwner productOwner;
 
-    @ManyToOne(targetEntity = Category.class)
+    @ManyToOne
     private Category category;
 
-    @OneToMany(targetEntity = Event.class, mappedBy = "witnessCard")
+    @OneToMany
     private List<Event> events;
 
-    @OneToMany(targetEntity = Challenge.class, mappedBy = "witnessCard")
+    @OneToMany
     private List<Challenge> challenges;
 
-    @OneToMany(targetEntity = Post.class, mappedBy = "witnessCard")
+    @OneToMany
     private List<Post> posts;
 
-    @OneToMany(targetEntity = Report.class, mappedBy = "witnessCard")
+    @OneToMany
     private List<Report> reports;
 
-    @ManyToMany(targetEntity = Witness.class)
+    @ManyToMany
     private List<Witness> witnesses;
 
     public Integer getId() {
