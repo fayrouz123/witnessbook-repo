@@ -28,10 +28,10 @@ public class Report implements Serializable {
 
     private Boolean treated;
 
-    @ManyToOne(targetEntity = Witness.class)
+    @ManyToOne
     private Witness witness;
 
-    @ManyToOne(targetEntity = WitnessCard.class)
+    @ManyToOne
     private WitnessCard witnessCard;
 
     public Integer getId() {

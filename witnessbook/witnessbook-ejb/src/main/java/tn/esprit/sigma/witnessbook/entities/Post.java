@@ -29,10 +29,10 @@ public class Post implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @ManyToOne(targetEntity = Witness.class)
+    @ManyToOne
     private Witness witness;
 
-    @ManyToOne(targetEntity = WitnessCard.class)
+    @ManyToOne
     private WitnessCard witnessCard;
 
     public Integer getId() {

@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 public class ProductOwner extends Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-    @OneToMany(targetEntity = WitnessCard.class, mappedBy = "productOwner")
+    @OneToMany
     private List<WitnessCard> witnessCards;
 
     public List<WitnessCard> getWitnessCards() {
