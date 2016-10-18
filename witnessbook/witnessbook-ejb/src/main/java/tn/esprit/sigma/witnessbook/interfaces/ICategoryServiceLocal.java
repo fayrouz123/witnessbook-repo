@@ -8,10 +8,16 @@ import javax.ejb.Local;
 @Local
 public interface ICategoryServiceLocal {
 	void create(Category entity);
-	 Category edit(Category entity);
-	 void remove(Category entity);
-	 Category find(Object id);
-	 List<Category> findAll();
-	 List<Category> findRange(int startPosition, int size);
-	 int count();
+
+	Category edit(Category entity);
+
+	void remove(Category entity);
+
+	Category find(Object id);
+
+	List<Category> findAll();
+
+	List<Category> findRange(int startPosition, int size);
+
+	int count();
 }
