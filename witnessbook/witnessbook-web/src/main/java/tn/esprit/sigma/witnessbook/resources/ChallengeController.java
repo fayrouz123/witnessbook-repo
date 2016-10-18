@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Challenge.
  */
-@Path("/api/challenge")
+@Path("/challenge")
 public class ChallengeController {
 
 

@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Moderator.
  */
-@Path("/api/moderator")
+@Path("/moderator")
 
 public class ModeratorController {
 

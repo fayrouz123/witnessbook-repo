@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Notification.
  */
-@Path("/api/notification")
+@Path("/notification")
 
 public class NotificationController {
 

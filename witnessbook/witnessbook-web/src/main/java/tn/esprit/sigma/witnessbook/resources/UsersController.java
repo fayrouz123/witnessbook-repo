@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Users.
  */
-@Path("/api/users")
+@Path("/users")
 public class UsersController {
 
 

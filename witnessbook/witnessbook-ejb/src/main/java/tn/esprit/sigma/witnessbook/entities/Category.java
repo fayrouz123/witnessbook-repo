@@ -2,7 +2,6 @@ package tn.esprit.sigma.witnessbook.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +17,10 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Basic
+    
     private String name;
 
-    @Basic
+    
     private String description;
 
     @OneToMany(targetEntity = WitnessCard.class, mappedBy = "category")

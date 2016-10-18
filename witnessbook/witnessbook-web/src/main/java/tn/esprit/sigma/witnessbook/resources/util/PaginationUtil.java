@@ -1,6 +1,5 @@
 package tn.esprit.sigma.witnessbook.resources.util;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response.ResponseBuilder;

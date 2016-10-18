@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Category.
  */
-@Path("/api/category")
+@Path("/category")
 
 public class CategoryController {
 

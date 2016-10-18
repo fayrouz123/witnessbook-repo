@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing ProductOwner.
  */
-@Path("/api/product-owner")
+@Path("/product-owner")
 
 public class ProductOwnerController {
 

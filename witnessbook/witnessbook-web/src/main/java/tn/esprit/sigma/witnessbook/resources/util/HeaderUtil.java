@@ -29,7 +29,6 @@ public class HeaderUtil {
     }
 
     public static ResponseBuilder createFailureAlert(ResponseBuilder builder, String entityName, String errorKey, String defaultMessage) {
-    //    log.error("Entity creation failed, {}", defaultMessage);
         builder.header("X-app-error", "error." + errorKey);
         builder.header("X-app-params", entityName);
         return builder;

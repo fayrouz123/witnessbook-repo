@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Witness.
  */
-@Path("/api/witness")
+@Path("/witness")
 public class WitnessController {
 
 

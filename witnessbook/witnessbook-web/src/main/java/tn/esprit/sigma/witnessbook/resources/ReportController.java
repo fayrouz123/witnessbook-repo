@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Report.
  */
-@Path("/api/report")
+@Path("/report")
 public class ReportController {
 
 

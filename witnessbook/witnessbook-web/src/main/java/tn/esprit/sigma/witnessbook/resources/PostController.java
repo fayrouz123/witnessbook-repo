@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Post.
  */
-@Path("/api/post")
+@Path("/post")
 
 public class PostController {
 

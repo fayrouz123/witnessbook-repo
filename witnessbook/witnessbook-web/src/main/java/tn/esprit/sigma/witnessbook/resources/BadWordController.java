@@ -19,10 +19,9 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing BadWord.
  */
-@Path("/api/bad-word")
+@Path("/bad-word")
 public class BadWordController {
 
-  //  private final Logger log = LoggerFactory.getLogger(BadWordController.class);
 
     @Inject
     private BadWordService badWordService;
@@ -38,7 +37,6 @@ public class BadWordController {
      */
     @POST
     public Response createBadWord(BadWord badWord) throws URISyntaxException {
-      //  log.debug("REST request to save BadWord : {}", badWord);
         badWordService.create(badWord);
         return HeaderUtil.createEntityCreationAlert(Response.created(new URI("/resources/api/bad-word/" + badWord.getId())),
                 "badWord", badWord.getId().toString())
@@ -57,7 +55,6 @@ public class BadWordController {
      */
     @PUT
     public Response updateBadWord(BadWord badWord) throws URISyntaxException {
-      //  log.debug("REST request to update BadWord : {}", badWord);
         badWordService.edit(badWord);
         return HeaderUtil.createEntityUpdateAlert(Response.ok(), "badWord", badWord.getId().toString())
                 .entity(badWord).build();
@@ -76,7 +73,6 @@ public class BadWordController {
      */
     @GET
     public List<BadWord> getAllBadWords() {
-      //  log.debug("REST request to get all BadWords");
         List<BadWord> badWords = badWordService.findAll();
         return badWords;
     }
@@ -91,7 +87,6 @@ public class BadWordController {
     @Path("/{id}")
     @GET
     public Response getBadWord(@PathParam("id") Integer id) {
-       // log.debug("REST request to get BadWord : {}", id);
         BadWord badWord = badWordService.find(id);
         return Optional.ofNullable(badWord)
                 .map(result -> Response.status(Response.Status.OK).entity(badWord).build())
@@ -107,7 +102,6 @@ public class BadWordController {
     @Path("/{id}")
     @DELETE
     public Response removeBadWord(@PathParam("id") Integer id) {
-       // log.debug("REST request to delete BadWord : {}", id);
         badWordService.remove(badWordService.find(id));
         return HeaderUtil.createEntityDeletionAlert(Response.ok(), "badWord", id.toString()).build();
     }

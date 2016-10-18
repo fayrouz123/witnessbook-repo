@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST controller for managing Event.
  */
-@Path("/api/event")
+@Path("/event")
 public class EventController {
 
 
