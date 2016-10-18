@@ -11,19 +11,19 @@ import javax.persistence.OneToMany;
 public class Witness extends Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-    @OneToMany(targetEntity = Challenge.class, mappedBy = "witness")
+    @OneToMany
     private List<Challenge> challenges;
 
-    @OneToMany(targetEntity = Post.class, mappedBy = "witness")
+    @OneToMany
     private List<Post> posts;
 
-    @OneToMany(targetEntity = Report.class, mappedBy = "witness")
+    @OneToMany
     private List<Report> reports;
 
-    @ManyToMany(targetEntity = WitnessCard.class, mappedBy = "witnesses")
+    @ManyToMany
     private List<WitnessCard> witnessCards;
 
-    @ManyToMany(targetEntity = Notification.class, mappedBy = "witnesses")
+    @ManyToMany
     private List<Notification> notifications;
 
     public List<Challenge> getChallenges() {
