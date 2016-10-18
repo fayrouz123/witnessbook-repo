@@ -1,10 +1,7 @@
 package tn.esprit.sigma.witnessbook.service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -38,13 +35,15 @@ public abstract class AbstractService<T> {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<T> findAll() {
+    @SuppressWarnings("unchecked")
+	public List<T> findAll() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
-    public List<T> findRange(int startPosition, int size) {
+    @SuppressWarnings("unchecked")
+	public List<T> findRange(int startPosition, int size) {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         Query q = getEntityManager().createQuery(cq);
@@ -53,61 +52,14 @@ public abstract class AbstractService<T> {
         return q.getResultList();
     }
 
-    public int count() {
+    @SuppressWarnings("unchecked")
+	public int count() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-
-    public Optional<T> findSingleByNamedQuery(String namedQueryName, Class<T> classT) {
-        return findOrEmpty(() -> getEntityManager().createNamedQuery(namedQueryName, classT).getSingleResult());
-    }
-
-    public Optional<T> findSingleByNamedQuery(String namedQueryName, Map<String, Object> parameters, Class<T> classT) {
-        Set<Entry<String, Object>> rawParameters = parameters.entrySet();
-        TypedQuery<T> query = getEntityManager().createNamedQuery(namedQueryName, classT);
-        rawParameters.stream().forEach((entry) -> {
-            query.setParameter(entry.getKey(), entry.getValue());
-        });
-        return findOrEmpty(() -> query.getSingleResult());
-    }
-
-    public List<T> findByNamedQuery(String namedQueryName) {
-        return getEntityManager().createNamedQuery(namedQueryName).getResultList();
-    }
-
-    public List<T> findByNamedQuery(String namedQueryName, Map<String, Object> parameters) {
-        return findByNamedQuery(namedQueryName, parameters, 0);
-    }
-
-    public List<T> findByNamedQuery(String queryName, int resultLimit) {
-        return getEntityManager().createNamedQuery(queryName).
-                setMaxResults(resultLimit).getResultList();
-    }
-
-    public List<T> findByNamedQuery(String namedQueryName, Map<String, Object> parameters, int resultLimit) {
-        Set<Entry<String, Object>> rawParameters = parameters.entrySet();
-        Query query = getEntityManager().createNamedQuery(namedQueryName);
-        if (resultLimit > 0) {
-            query.setMaxResults(resultLimit);
-        }
-        rawParameters.stream().forEach((entry) -> {
-            query.setParameter(entry.getKey(), entry.getValue());
-        });
-        return query.getResultList();
-    }
-
-    public static <T> Optional<T> findOrEmpty(final DaoRetriever<T> retriever) {
-        try {
-            return Optional.of(retriever.retrieve());
-        } catch (NoResultException ex) {
-            //log
-        }
-        return Optional.empty();
-    }
-
     @FunctionalInterface
     public interface DaoRetriever<T> {
 

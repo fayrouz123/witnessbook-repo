@@ -1,6 +1,6 @@
 package tn.esprit.sigma.witnessbook.resources;
 
-import java.util.HashSet;
+
 import java.util.Set;
 //import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import javax.ws.rs.core.Application;
