@@ -10,7 +10,7 @@ import tn.esprit.sigma.witnessbook.entities.Post;
 @Local
 public interface IBadWordServiceLocal {
 	void create(BadWord entity);
-	 Post edit(BadWord entity);
+	 BadWord edit(BadWord entity);
 	 void remove(BadWord entity);
 	 BadWord find(Object id);
 	 List<BadWord> findAll();
