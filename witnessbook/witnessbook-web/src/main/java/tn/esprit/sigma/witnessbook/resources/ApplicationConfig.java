@@ -2,7 +2,6 @@ package tn.esprit.sigma.witnessbook.resources;
 
 
 import java.util.Set;
-//import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import javax.ws.rs.core.Application;
 
 
@@ -16,13 +15,6 @@ public class ApplicationConfig extends Application {
         return resources;
     }
 
-
-  /*  @Override
-    public Set<Object> getSingletons() {
-        final Set<Object> instances = new HashSet<>();
-        instances.add(new JacksonJsonProvider());
-        return instances;
-    }*/
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(tn.esprit.sigma.witnessbook.resources.BadWordController.class);
