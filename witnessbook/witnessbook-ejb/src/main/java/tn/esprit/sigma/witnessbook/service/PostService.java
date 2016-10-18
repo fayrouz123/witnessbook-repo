@@ -4,14 +4,14 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import tn.esprit.sigma.witnessbook.entities.Post;
 import tn.esprit.sigma.witnessbook.service.AbstractService;
 
 @Stateless
 @Named("post")
 public class PostService extends AbstractService<Post> {
-
-    @PersistenceContext(unitName = "DEFAULT_PU")
+	@PersistenceContext
     private EntityManager em;
 
     @Override
