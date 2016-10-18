@@ -7,7 +7,7 @@ import tn.esprit.sigma.witnessbook.entities.Post;
 
 public interface ICategoryServiceLocal {
 	void create(Category entity);
-	 Post edit(Category entity);
+	 Category edit(Category entity);
 	 void remove(Category entity);
 	 Category find(Object id);
 	 List<Category> findAll();
