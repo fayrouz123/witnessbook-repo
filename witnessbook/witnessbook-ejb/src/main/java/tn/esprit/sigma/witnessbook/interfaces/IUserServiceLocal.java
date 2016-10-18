@@ -8,11 +8,17 @@ import tn.esprit.sigma.witnessbook.entities.Users;
 @Local
 public interface IUserServiceLocal {
 	void create(Users entity);
-	 Users edit(Users entity);
-	 void remove(Users entity);
-	 Users find(Object id);
-	 List<Users> findAll();
-	 List<Users> findRange(int startPosition, int size);
-	 int count();
+
+	Users edit(Users entity);
+
+	void remove(Users entity);
+
+	Users find(Object id);
+
+	List<Users> findAll();
+
+	List<Users> findRange(int startPosition, int size);
+
+	int count();
 
 }
