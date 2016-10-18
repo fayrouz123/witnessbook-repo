@@ -9,11 +9,17 @@ import tn.esprit.sigma.witnessbook.entities.Report;
 public interface IReportServiceLocal {
 	
 	void create(Report entity);
+
 	Report edit(Report entity);
-	 void remove(Report entity);
-	 Report find(Object id);
-	 List<Report> findAll();
-	 List<Report> findRange(int startPosition, int size);
-	 int count();
+
+	void remove(Report entity);
+
+	Report find(Object id);
+
+	List<Report> findAll();
+
+	List<Report> findRange(int startPosition, int size);
+
+	int count();
 
 }
