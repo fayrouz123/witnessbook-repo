@@ -16,9 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-/**
- * REST controller for managing Category.
- */
+
 @Path("/category")
 
 public class CategoryController {
@@ -27,15 +25,7 @@ public class CategoryController {
     @Inject
     private CategoryService categoryService;
 
-    /**
-     * POST : Create a new category.
-     *
-     * @param category the category to create
-     * @return the Response with status 201 (Created) and with body the new
-     * category, or with status 400 (Bad Request) if the category has already an
-     * ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @POST
     public Response createCategory(Category category) throws URISyntaxException {
         categoryService.create(category);
@@ -44,16 +34,7 @@ public class CategoryController {
                 .entity(category).build();
     }
 
-    /**
-     * PUT : Updates an existing category.
-     *
-     * @param category the category to update
-     * @return the Response with status 200 (OK) and with body the updated
-     * category, or with status 400 (Bad Request) if the category is not valid,
-     * or with status 500 (Internal Server Error) if the category couldn't be
-     * updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+    
     @PUT
     public Response updateCategory(Category category) throws URISyntaxException {
         categoryService.edit(category);
@@ -61,30 +42,14 @@ public class CategoryController {
                 .entity(category).build();
     }
 
-    /**
-     * GET : get all the categories. <% if (pagination != 'no') {} @param
-     * pageable the p
-     *
-     * agination information<% } if (fieldsContainNoOwnerOneToOne) {} @param
-     * filter the filter of the r
-     * equest<% }}
-     * @return the Response with status 200 (OK) and the list of categories in
-     * body<% if (pagination != 'no') {} @throws URISyntaxExce
-     * ption if there is an error to generate the pagination HTTP headers<% }}
-     */
+ 
     @GET
     public List<Category> getAllCategories() {
         List<Category> categories = categoryService.findAll();
         return categories;
     }
 
-    /**
-     * GET /:id : get the "id" category.
-     *
-     * @param id the id of the category to retrieve
-     * @return the Response with status 200 (OK) and with body the category, or
-     * with status 404 (Not Found)
-     */
+   
     @Path("/{id}")
     @GET
     public Response getCategory(@PathParam("id") Integer id) {
@@ -94,12 +59,7 @@ public class CategoryController {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
-    /**
-     * DELETE /:id : remove the "id" category.
-     *
-     * @param id the id of the category to delete
-     * @return the Response with status 200 (OK)
-     */
+    
     @Path("/{id}")
     @DELETE
     public Response removeCategory(@PathParam("id") Integer id) {

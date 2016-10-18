@@ -16,9 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-/**
- * REST controller for managing Post.
- */
+
 @Path("/post")
 
 public class PostController {
@@ -27,14 +25,7 @@ public class PostController {
     @Inject
     private PostService postService;
 
-    /**
-     * POST : Create a new post.
-     *
-     * @param post the post to create
-     * @return the Response with status 201 (Created) and with body the new
-     * post, or with status 400 (Bad Request) if the post has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @POST
     public Response createPost(Post post) throws URISyntaxException {
         postService.create(post);
@@ -43,15 +34,7 @@ public class PostController {
                 .entity(post).build();
     }
 
-    /**
-     * PUT : Updates an existing post.
-     *
-     * @param post the post to update
-     * @return the Response with status 200 (OK) and with body the updated post,
-     * or with status 400 (Bad Request) if the post is not valid, or with status
-     * 500 (Internal Server Error) if the post couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+    
     @PUT
     public Response updatePost(Post post) throws URISyntaxException {
         postService.edit(post);
@@ -59,30 +42,14 @@ public class PostController {
                 .entity(post).build();
     }
 
-    /**
-     * GET : get all the posts. <% if (pagination != 'no') {} @param pageable
-     * the p
-     *
-     * agination information<% } if (fieldsContainNoOwnerOneToOne) {} @param
-     * filter the filter of the r
-     * equest<% }}
-     * @return the Response with status 200 (OK) and the list of posts in body<%
-     * if (pagination != 'no') {} @throws URISyntaxExce
-     * ption if there is an error to generate the pagination HTTP headers<% }}
-     */
+    
     @GET
     public List<Post> getAllPosts() {
         List<Post> posts = postService.findAll();
         return posts;
     }
 
-    /**
-     * GET /:id : get the "id" post.
-     *
-     * @param id the id of the post to retrieve
-     * @return the Response with status 200 (OK) and with body the post, or with
-     * status 404 (Not Found)
-     */
+   
     @Path("/{id}")
     @GET
     public Response getPost(@PathParam("id") Integer id) {
@@ -92,12 +59,7 @@ public class PostController {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
-    /**
-     * DELETE /:id : remove the "id" post.
-     *
-     * @param id the id of the post to delete
-     * @return the Response with status 200 (OK)
-     */
+   
     @Path("/{id}")
     @DELETE
     public Response removePost(@PathParam("id") Integer id) {

@@ -16,9 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-/**
- * REST controller for managing Witness.
- */
+
 @Path("/witness")
 public class WitnessController {
 
@@ -26,15 +24,7 @@ public class WitnessController {
     @Inject
     private WitnessService witnessService;
 
-    /**
-     * POST : Create a new witness.
-     *
-     * @param witness the witness to create
-     * @return the Response with status 201 (Created) and with body the new
-     * witness, or with status 400 (Bad Request) if the witness has already an
-     * ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @POST
     public Response createWitness(Witness witness) throws URISyntaxException {
         witnessService.create(witness);
@@ -43,16 +33,7 @@ public class WitnessController {
                 .entity(witness).build();
     }
 
-    /**
-     * PUT : Updates an existing witness.
-     *
-     * @param witness the witness to update
-     * @return the Response with status 200 (OK) and with body the updated
-     * witness, or with status 400 (Bad Request) if the witness is not valid, or
-     * with status 500 (Internal Server Error) if the witness couldn't be
-     * updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @PUT
     public Response updateWitness(Witness witness) throws URISyntaxException {
         witnessService.edit(witness);
@@ -60,30 +41,14 @@ public class WitnessController {
                 .entity(witness).build();
     }
 
-    /**
-     * GET : get all the witnesses. <% if (pagination != 'no') {} @param
-     * pageable the p
-     *
-     * agination information<% } if (fieldsContainNoOwnerOneToOne) {} @param
-     * filter the filter of the r
-     * equest<% }}
-     * @return the Response with status 200 (OK) and the list of witnesses in
-     * body<% if (pagination != 'no') {} @throws URISyntaxExce
-     * ption if there is an error to generate the pagination HTTP headers<% }}
-     */
+   
     @GET
     public List<Witness> getAllWitnesses() {
         List<Witness> witnesses = witnessService.findAll();
         return witnesses;
     }
 
-    /**
-     * GET /:id : get the "id" witness.
-     *
-     * @param id the id of the witness to retrieve
-     * @return the Response with status 200 (OK) and with body the witness, or
-     * with status 404 (Not Found)
-     */
+    
     @Path("/{id}")
     @GET
     public Response getWitness(@PathParam("id") Integer id) {
@@ -93,12 +58,6 @@ public class WitnessController {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
-    /**
-     * DELETE /:id : remove the "id" witness.
-     *
-     * @param id the id of the witness to delete
-     * @return the Response with status 200 (OK)
-     */
     @Path("/{id}")
     @DELETE
     public Response removeWitness(@PathParam("id") Integer id) {

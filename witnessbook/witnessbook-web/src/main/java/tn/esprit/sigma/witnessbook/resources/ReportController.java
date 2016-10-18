@@ -16,9 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-/**
- * REST controller for managing Report.
- */
+
 @Path("/report")
 public class ReportController {
 
@@ -26,14 +24,6 @@ public class ReportController {
     @Inject
     private ReportService reportService;
 
-    /**
-     * POST : Create a new report.
-     *
-     * @param report the report to create
-     * @return the Response with status 201 (Created) and with body the new
-     * report, or with status 400 (Bad Request) if the report has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @POST
     public Response createReport(Report report) throws URISyntaxException {
         reportService.create(report);
@@ -42,15 +32,6 @@ public class ReportController {
                 .entity(report).build();
     }
 
-    /**
-     * PUT : Updates an existing report.
-     *
-     * @param report the report to update
-     * @return the Response with status 200 (OK) and with body the updated
-     * report, or with status 400 (Bad Request) if the report is not valid, or
-     * with status 500 (Internal Server Error) if the report couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PUT
     public Response updateReport(Report report) throws URISyntaxException {
         reportService.edit(report);
@@ -58,30 +39,14 @@ public class ReportController {
                 .entity(report).build();
     }
 
-    /**
-     * GET : get all the reports. <% if (pagination != 'no') {} @param pageable
-     * the p
-     *
-     * agination information<% } if (fieldsContainNoOwnerOneToOne) {} @param
-     * filter the filter of the r
-     * equest<% }}
-     * @return the Response with status 200 (OK) and the list of reports in
-     * body<% if (pagination != 'no') {} @throws URISyntaxExce
-     * ption if there is an error to generate the pagination HTTP headers<% }}
-     */
+    
     @GET
     public List<Report> getAllReports() {
         List<Report> reports = reportService.findAll();
         return reports;
     }
 
-    /**
-     * GET /:id : get the "id" report.
-     *
-     * @param id the id of the report to retrieve
-     * @return the Response with status 200 (OK) and with body the report, or
-     * with status 404 (Not Found)
-     */
+   
     @Path("/{id}")
     @GET
     public Response getReport(@PathParam("id") Integer id) {
@@ -91,12 +56,7 @@ public class ReportController {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
-    /**
-     * DELETE /:id : remove the "id" report.
-     *
-     * @param id the id of the report to delete
-     * @return the Response with status 200 (OK)
-     */
+    
     @Path("/{id}")
     @DELETE
     public Response removeReport(@PathParam("id") Integer id) {

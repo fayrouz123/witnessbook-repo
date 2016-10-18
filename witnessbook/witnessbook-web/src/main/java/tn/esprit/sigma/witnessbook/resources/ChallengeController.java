@@ -16,9 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-/**
- * REST controller for managing Challenge.
- */
+
 @Path("/challenge")
 public class ChallengeController {
 
@@ -26,15 +24,7 @@ public class ChallengeController {
     @Inject
     private ChallengeService challengeService;
 
-    /**
-     * POST : Create a new challenge.
-     *
-     * @param challenge the challenge to create
-     * @return the Response with status 201 (Created) and with body the new
-     * challenge, or with status 400 (Bad Request) if the challenge has already
-     * an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @POST
     public Response createChallenge(Challenge challenge) throws URISyntaxException {
         challengeService.create(challenge);
@@ -43,16 +33,7 @@ public class ChallengeController {
                 .entity(challenge).build();
     }
 
-    /**
-     * PUT : Updates an existing challenge.
-     *
-     * @param challenge the challenge to update
-     * @return the Response with status 200 (OK) and with body the updated
-     * challenge, or with status 400 (Bad Request) if the challenge is not
-     * valid, or with status 500 (Internal Server Error) if the challenge
-     * couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @PUT
     public Response updateChallenge(Challenge challenge) throws URISyntaxException {
         challengeService.edit(challenge);
@@ -60,30 +41,14 @@ public class ChallengeController {
                 .entity(challenge).build();
     }
 
-    /**
-     * GET : get all the challenges. <% if (pagination != 'no') {} @param
-     * pageable the p
-     *
-     * agination information<% } if (fieldsContainNoOwnerOneToOne) {} @param
-     * filter the filter of the r
-     * equest<% }}
-     * @return the Response with status 200 (OK) and the list of challenges in
-     * body<% if (pagination != 'no') {} @throws URISyntaxExce
-     * ption if there is an error to generate the pagination HTTP headers<% }}
-     */
+   
     @GET
     public List<Challenge> getAllChallenges() {
         List<Challenge> challenges = challengeService.findAll();
         return challenges;
     }
 
-    /**
-     * GET /:id : get the "id" challenge.
-     *
-     * @param id the id of the challenge to retrieve
-     * @return the Response with status 200 (OK) and with body the challenge, or
-     * with status 404 (Not Found)
-     */
+    
     @Path("/{id}")
     @GET
     public Response getChallenge(@PathParam("id") Integer id) {
@@ -93,12 +58,7 @@ public class ChallengeController {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
-    /**
-     * DELETE /:id : remove the "id" challenge.
-     *
-     * @param id the id of the challenge to delete
-     * @return the Response with status 200 (OK)
-     */
+   
     @Path("/{id}")
     @DELETE
     public Response removeChallenge(@PathParam("id") Integer id) {

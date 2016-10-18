@@ -17,9 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-/**
- * REST controller for managing Event.
- */
+
 @Path("/event")
 public class EventController {
 
@@ -27,14 +25,7 @@ public class EventController {
     @Inject
     private EventService eventService;
 
-    /**
-     * POST : Create a new event.
-     *
-     * @param event the event to create
-     * @return the Response with status 201 (Created) and with body the new
-     * event, or with status 400 (Bad Request) if the event has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+   
     @POST
     public Response createEvent(Event event) throws URISyntaxException {
         eventService.create(event);
@@ -43,15 +34,7 @@ public class EventController {
                 .entity(event).build();
     }
 
-    /**
-     * PUT : Updates an existing event.
-     *
-     * @param event the event to update
-     * @return the Response with status 200 (OK) and with body the updated
-     * event, or with status 400 (Bad Request) if the event is not valid, or
-     * with status 500 (Internal Server Error) if the event couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+    
     @PUT
     public Response updateEvent(Event event) throws URISyntaxException {
         eventService.edit(event);
@@ -59,30 +42,14 @@ public class EventController {
                 .entity(event).build();
     }
 
-    /**
-     * GET : get all the events. <% if (pagination != 'no') {} @param pageable
-     * the p
-     *
-     * agination information<% } if (fieldsContainNoOwnerOneToOne) {} @param
-     * filter the filter of the r
-     * equest<% }}
-     * @return the Response with status 200 (OK) and the list of events in
-     * body<% if (pagination != 'no') {} @throws URISyntaxExce
-     * ption if there is an error to generate the pagination HTTP headers<% }}
-     */
+   
     @GET
     public List<Event> getAllEvents() {
         List<Event> events = eventService.findAll();
         return events;
     }
 
-    /**
-     * GET /:id : get the "id" event.
-     *
-     * @param id the id of the event to retrieve
-     * @return the Response with status 200 (OK) and with body the event, or
-     * with status 404 (Not Found)
-     */
+   
     @Path("/{id}")
     @GET
     public Response getEvent(@PathParam("id") Integer id) {
@@ -92,12 +59,7 @@ public class EventController {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
-    /**
-     * DELETE /:id : remove the "id" event.
-     *
-     * @param id the id of the event to delete
-     * @return the Response with status 200 (OK)
-     */
+    
     @Path("/{id}")
     @DELETE
     public Response removeEvent(@PathParam("id") Integer id) {
