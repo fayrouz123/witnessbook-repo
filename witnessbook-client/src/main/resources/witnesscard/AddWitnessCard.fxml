@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="750.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="witnesscard.WitnessCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#uppimg" prefHeight="700.0" prefWidth="750.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="witnesscard.WitnessCardController">
    <children>
       <Button id="addWitnessCard" fx:id="AddWC" layoutX="320.0" layoutY="604.0" mnemonicParsing="false" onAction="#AddWitnessCard" text="Add Witness Card" />
       <Text layoutX="69.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Witness Card" wrappingWidth="213.4921875" />
@@ -19,8 +19,8 @@
       <TextArea id="witnessCardDescription" fx:id="witnessCardDescription" layoutX="108.0" layoutY="125.0" prefHeight="200.0" prefWidth="200.0" />
       <Text layoutX="21.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :" />
       <TextField id="witnessCardAddress" fx:id="witnessCardAddress" layoutX="101.0" layoutY="368.0" />
-      <Text layoutX="21.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cateory :" />
-      <ComboBox id="witnessCardCategory" fx:id="witnessCardCategory" layoutX="87.0" layoutY="459.0" prefWidth="150.0" promptText="Lounge" />
+      <Text layoutX="21.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category :" />
+      <ComboBox id="witnessCardCategory" fx:id="witnessCardCategory" layoutX="87.0" layoutY="459.0" onAction="#showcat" prefWidth="150.0" />
       <Text layoutX="15.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image :" />
       <Button id="uploadImageWitnessCard" fx:id="UpploadImage" layoutX="89.0" layoutY="527.0" mnemonicParsing="false" text="Upload Image" />
       <Button layoutX="682.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
@@ -31,6 +31,6 @@
             <Image url="@../images/search.png" />
          </image>
       </ImageView>
-      <Button layoutX="415.0" layoutY="261.0" mnemonicParsing="false" text="Button" />
+      <ImageView fx:id="wcimageadded" fitHeight="150.0" fitWidth="200.0" layoutX="289.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

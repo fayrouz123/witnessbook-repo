@@ -27,6 +27,9 @@ public class CategoryDelegate {
 	public static List<Category> findAll(){
 		return getProxy().findAll();
 	}
+	
+	
+	
 	public static Category find(int id){
 		return getProxy().find(id);
 	}

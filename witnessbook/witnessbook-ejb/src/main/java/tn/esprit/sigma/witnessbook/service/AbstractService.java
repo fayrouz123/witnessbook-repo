@@ -32,6 +32,8 @@ public abstract class AbstractService<T> {
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
+    
+
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<T> findAll() {
