@@ -11,7 +11,7 @@ import tn.esprit.sigma.witnessbook.service.AbstractService;
 
 @Stateless
 @Named("witnessCard")
-public class WitnessCardService extends AbstractService<WitnessCard> {
+public class WitnessCardService extends AbstractService<WitnessCard> implements  WitnessCardServiceLocal,WitnessCardServiceRemote {
 	@PersistenceContext
     private EntityManager em;
 

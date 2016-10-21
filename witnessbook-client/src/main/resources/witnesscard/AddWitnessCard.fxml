@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="750.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="witnesscard.WitnessCardController">
    <children>
-      <Button id="addWitnessCard" fx:id="AddWC" layoutX="320.0" layoutY="604.0" mnemonicParsing="false" text="Add Witness Card"  onAction="#AddWitnessCard"/>
+      <Button id="addWitnessCard" fx:id="AddWC" layoutX="320.0" layoutY="604.0" mnemonicParsing="false" onAction="#AddWitnessCard" text="Add Witness Card" />
       <Text layoutX="69.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Witness Card" wrappingWidth="213.4921875" />
       <Text layoutX="38.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
       <TextField id="witnessCardName" fx:id="witnessCardName" layoutX="108.0" layoutY="78.0" />
