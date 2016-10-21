@@ -3,7 +3,8 @@ package tn.esprit.sigma.witnessbook.resources;
 import tn.esprit.sigma.witnessbook.entities.Category;
 import tn.esprit.sigma.witnessbook.service.CategoryService;
 import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import javax.inject.Inject;
+
+import javax.ejb.EJB;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -22,7 +23,7 @@ import javax.ws.rs.core.Response;
 public class CategoryController {
 
 
-    @Inject
+    @EJB
     private CategoryService categoryService;
 
    

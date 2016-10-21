@@ -6,11 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import tn.esprit.sigma.witnessbook.entities.Users;
+import tn.esprit.sigma.witnessbook.interfaces.IUserServiceLocal;
+import tn.esprit.sigma.witnessbook.interfaces.IUserServiceRemote;
 import tn.esprit.sigma.witnessbook.service.AbstractService;
 
 @Stateless
 @Named("users")
-public class UsersService extends AbstractService<Users> {
+public class UsersService extends AbstractService<Users> implements IUserServiceLocal,IUserServiceRemote{
 	@PersistenceContext
     private EntityManager em;
 

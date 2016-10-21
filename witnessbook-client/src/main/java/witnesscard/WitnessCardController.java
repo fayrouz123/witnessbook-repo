@@ -10,7 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import tn.esprit.sigma.witnessbook.entities.Category;
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
-import tn.esprit.sigma.witnessbook.service.WitnessCardServiceRemote;
+import tn.esprit.sigma.witnessbook.interfaces.IWitnessCardServiceRemote;
+import tn.esprit.sigma.witnessbook.interfaces.IWitnessCardServiceRemote;
 
 
 public class WitnessCardController {
@@ -50,7 +51,7 @@ public class WitnessCardController {
     void AddWitnessCard(ActionEvent event) throws NamingException{
 		
 		Context context = new InitialContext();
-		WitnessCardServiceRemote wcsr = (WitnessCardServiceRemote) context.lookup("witnessbook-ear/witnessbook-ejb/WitnessCardService!tn.esprit.sigma.witnessbook.service.WitnessCardServiceRemote");
+		IWitnessCardServiceRemote wcsr = (IWitnessCardServiceRemote) context.lookup("witnessbook-ear/witnessbook-ejb/WitnessCardService!tn.esprit.sigma.witnessbook.service.WitnessCardServiceRemote");
 		WitnessCard wc = new WitnessCard();
 		wc.setName(witnessCardName.getText());
 		wc.setDescription(witnessCardDescription.getText());

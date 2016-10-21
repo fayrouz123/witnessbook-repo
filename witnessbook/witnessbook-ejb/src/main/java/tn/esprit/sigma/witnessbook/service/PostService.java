@@ -6,11 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import tn.esprit.sigma.witnessbook.entities.Post;
+import tn.esprit.sigma.witnessbook.interfaces.IPostServiceLocal;
+import tn.esprit.sigma.witnessbook.interfaces.IPostServiceRemote;
 import tn.esprit.sigma.witnessbook.service.AbstractService;
 
 @Stateless
 @Named("post")
-public class PostService extends AbstractService<Post> {
+public class PostService extends AbstractService<Post> implements IPostServiceLocal,IPostServiceRemote{
 	@PersistenceContext
     private EntityManager em;
 

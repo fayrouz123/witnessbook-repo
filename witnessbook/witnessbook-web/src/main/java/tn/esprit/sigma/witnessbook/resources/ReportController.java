@@ -1,13 +1,11 @@
 package tn.esprit.sigma.witnessbook.resources;
 
-import tn.esprit.sigma.witnessbook.entities.Report;
-import tn.esprit.sigma.witnessbook.service.ReportService;
-import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
-import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+
+import javax.ejb.EJB;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,12 +14,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+import tn.esprit.sigma.witnessbook.entities.Report;
+import tn.esprit.sigma.witnessbook.resources.util.HeaderUtil;
+import tn.esprit.sigma.witnessbook.service.ReportService;
+
 
 @Path("/report")
 public class ReportController {
 
 
-    @Inject
+    @EJB
     private ReportService reportService;
 
     @POST

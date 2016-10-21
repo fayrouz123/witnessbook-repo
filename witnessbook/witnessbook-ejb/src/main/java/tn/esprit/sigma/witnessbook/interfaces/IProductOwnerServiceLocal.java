@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import tn.esprit.sigma.witnessbook.entities.ProductOwner;
+
 @Local
 public interface IProductOwnerServiceLocal {
 	void create(ProductOwner entity);

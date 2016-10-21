@@ -7,11 +7,14 @@ import javax.persistence.PersistenceContext;
 
 //import javax.persistence.PersistenceContext;
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
+import tn.esprit.sigma.witnessbook.interfaces.IWitnessCardServiceLocal;
+import tn.esprit.sigma.witnessbook.interfaces.IWitnessCardServiceRemote;
 import tn.esprit.sigma.witnessbook.service.AbstractService;
+
 
 @Stateless
 
-public class WitnessCardService extends AbstractService<WitnessCard> implements  WitnessCardServiceLocal,WitnessCardServiceRemote {
+public class WitnessCardService extends AbstractService<WitnessCard> implements  IWitnessCardServiceLocal,IWitnessCardServiceRemote {
 	
 	@PersistenceContext
      EntityManager em;

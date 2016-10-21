@@ -6,11 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import tn.esprit.sigma.witnessbook.entities.Event;
+import tn.esprit.sigma.witnessbook.interfaces.IEventServiceLocal;
+import tn.esprit.sigma.witnessbook.interfaces.IEventServiceRemote;
 import tn.esprit.sigma.witnessbook.service.AbstractService;
 
 @Stateless
 @Named("event")
-public class EventService extends AbstractService<Event> {
+public class EventService extends AbstractService<Event> implements IEventServiceLocal,IEventServiceRemote{
 	@PersistenceContext
     private EntityManager em;
 

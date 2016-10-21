@@ -1,9 +1,10 @@
 package tn.esprit.sigma.witnessbook.interfaces;
 
 import java.util.List;
-import java.util.Locale.Category;
 
 import javax.ejb.Local;
+
+import tn.esprit.sigma.witnessbook.entities.Category;
 
 @Local
 public interface ICategoryServiceLocal {

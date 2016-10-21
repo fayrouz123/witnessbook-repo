@@ -6,11 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import tn.esprit.sigma.witnessbook.entities.ProductOwner;
-import tn.esprit.sigma.witnessbook.service.AbstractService;
+import tn.esprit.sigma.witnessbook.interfaces.IProductOwnerServiceLocal;
+import tn.esprit.sigma.witnessbook.interfaces.IProductOwnerServiceRemote;
 
 @Stateless
 @Named("productOwner")
-public class ProductOwnerService extends AbstractService<ProductOwner> {
+public class ProductOwnerService extends AbstractService<ProductOwner> implements IProductOwnerServiceLocal,IProductOwnerServiceRemote {
 	@PersistenceContext
     private EntityManager em;
 
@@ -23,4 +24,5 @@ public class ProductOwnerService extends AbstractService<ProductOwner> {
         super(ProductOwner.class);
     }
 
+	
 }

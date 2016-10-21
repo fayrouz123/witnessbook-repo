@@ -1,13 +1,13 @@
-package tn.esprit.sigma.witnessbook.service;
+package tn.esprit.sigma.witnessbook.interfaces;
 
 import java.util.List;
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
 
-@Local
-public interface WitnessCardServiceLocal {
+@Remote
+public interface IWitnessCardServiceRemote {
 	void create(WitnessCard entity);
 
 	WitnessCard edit(WitnessCard entity);
@@ -21,5 +21,4 @@ public interface WitnessCardServiceLocal {
 	List<WitnessCard> findRange(int startPosition, int size);
 
 	int count();
-
 }
