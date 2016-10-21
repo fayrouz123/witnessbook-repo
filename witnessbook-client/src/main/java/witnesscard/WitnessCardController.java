@@ -1,15 +1,11 @@
 package witnesscard;
 
-import java.awt.Button;
-import java.awt.TextArea;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import tn.esprit.sigma.witnessbook.entities.Category;
@@ -50,10 +46,8 @@ public class WitnessCardController {
 	private javafx.scene.control.Button	ShowAllWitnessCards;
 	
 	
-	
-	
 	@FXML
-	void AddWitnessCard() throws NamingException{
+    void AddWitnessCard(ActionEvent event) throws NamingException{
 		
 		Context context = new InitialContext();
 		WitnessCardServiceRemote wcsr = (WitnessCardServiceRemote) context.lookup("witnessbook-ear/witnessbook-ejb/WitnessCardService!tn.esprit.sigma.witnessbook.service.WitnessCardServiceRemote");
@@ -63,7 +57,6 @@ public class WitnessCardController {
 		wc.setAddress(witnessCardAddress.getText());
 		//wc.setCategory(witnessCardCategory.getValue());
 	    //wc.setAttachement(UpploadImage.getLabel());
-		
 		wcsr.create(wc); 
 
 		
