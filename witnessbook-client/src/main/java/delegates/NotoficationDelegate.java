@@ -7,7 +7,6 @@ import tn.esprit.sigma.witnessbook.interfaces.INotificationServiceRemote;
 
 public class NotoficationDelegate {
 
-	private static INotificationServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/NotificationService!tn.esprit.sigma.witnessbook.interfaces.INotificationServiceRemote";
 
 	private static INotificationServiceRemote getProxy() {

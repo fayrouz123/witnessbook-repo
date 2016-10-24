@@ -22,4 +22,7 @@ public interface IUserServiceRemote {
 	List<Users> findRange(int startPosition, int size);
 
 	int count();
+	public boolean userAuthentificate(Users user) ;
+	public boolean changePassword(Users user, String newPassword) ;
+    public void createe(Users u) ;
 }

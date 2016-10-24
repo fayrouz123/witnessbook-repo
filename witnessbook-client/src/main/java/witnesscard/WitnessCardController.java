@@ -8,8 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
-import javax.naming.Context;
-import javax.naming.InitialContext;
+
 import javax.naming.NamingException;
 
 import delegates.CategoryDelegate;
@@ -17,7 +16,6 @@ import delegates.WitnessCardDelagate;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,8 +23,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import tn.esprit.sigma.witnessbook.entities.Category;
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
-import tn.esprit.sigma.witnessbook.interfaces.IWitnessCardServiceRemote;
-import tn.esprit.sigma.witnessbook.interfaces.IWitnessCardServiceRemote;
+
 
 
 public class WitnessCardController {

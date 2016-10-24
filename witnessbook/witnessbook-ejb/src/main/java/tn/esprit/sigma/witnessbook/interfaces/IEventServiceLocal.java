@@ -21,4 +21,7 @@ public interface IEventServiceLocal {
 	List<Event> findRange(int startPosition, int size);
 
 	int count();
+	public List<Event> findAllEventsOrderedByDate() ;
+	
+	public List<Event> tomorrowUpcomingEvents() ;
 }

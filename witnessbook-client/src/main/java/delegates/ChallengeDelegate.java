@@ -10,7 +10,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IChallengeServiceRemote;
 public class ChallengeDelegate {
 
 	
-	private static IChallengeServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/ChallengeService!tn.esprit.sigma.witnessbook.interfaces.IChallengeServiceRemote";
 	
 	private static IChallengeServiceRemote getProxy() {

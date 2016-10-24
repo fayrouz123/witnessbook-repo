@@ -24,5 +24,7 @@ public class WitnessService extends AbstractService<Witness> implements IWitness
     public WitnessService() {
         super(Witness.class);
     }
+    
+    
 
 }

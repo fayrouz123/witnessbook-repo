@@ -1,6 +1,7 @@
 package tn.esprit.sigma.witnessbook.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -10,6 +11,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Witness extends Users implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private String FirstName;
+	
+	private String LastName;
+	
+	private Date Birthday;
 
     @OneToMany
     private List<Challenge> challenges;
@@ -25,8 +32,55 @@ public class Witness extends Users implements Serializable {
 
     @ManyToMany
     private List<Notification> notifications;
+    
+    
+    
 
-    public List<Challenge> getChallenges() {
+    public Witness(int Id,String username, String password, String email, String address, String avatar, Boolean activated,
+			Boolean banned, String firstName, String lastName, Date birthday) {
+		super(Id,username, password, email, address, avatar, activated, banned);
+		FirstName = firstName;
+		LastName = lastName;
+		Birthday = birthday;
+	}
+    public Witness()
+    {
+    	
+    }
+    
+    
+
+	public String getFirstName() {
+		return FirstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		FirstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return LastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+
+
+	public Date getBirthday() {
+		return Birthday;
+	}
+
+
+	public void setBirthday(Date birthday) {
+		Birthday = birthday;
+	}
+
+
+	public List<Challenge> getChallenges() {
         return this.challenges;
     }
 

@@ -1,16 +1,19 @@
 package tn.esprit.sigma.witnessbook.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 
 
 @Entity
-public abstract class Users implements Serializable {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public  class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @Id
@@ -18,7 +21,6 @@ public abstract class Users implements Serializable {
     private Integer id;
 
     
-    private Long cin;
 
     
     private String username;
@@ -29,16 +31,9 @@ public abstract class Users implements Serializable {
     private String email;
 
     
-    private String firstname;
-
-    
-    private String lastname;
-
-    
-    private Date birthday;
-
-    
     private String address;
+    
+    public String avatar;
 
     
     private Boolean activated;
@@ -46,7 +41,53 @@ public abstract class Users implements Serializable {
     
     private Boolean banned;
 
-    public Integer getId() {
+    
+    
+    
+
+	public Users(String username, String password, String email, String address, String avatar, Boolean activated,
+			Boolean banned) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.avatar = avatar;
+		this.activated = activated;
+		this.banned = banned;
+	}
+
+	public Users(Integer id, String username, String password, String email, String address, String avatar,
+			Boolean activated, Boolean banned) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.address = address;
+		this.avatar = avatar;
+		this.activated = activated;
+		this.banned = banned;
+	}
+	
+	
+	
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public Boolean getActivated() {
+		return activated;
+	}
+
+	public Boolean getBanned() {
+		return banned;
+	}
+
+	public Integer getId() {
         return this.id;
     }
 
@@ -54,13 +95,8 @@ public abstract class Users implements Serializable {
         this.id = id;
     }
 
-        public Long getCin() {
-        return this.cin;
-    }
 
-    public void setCin(Long cin) {
-        this.cin = cin;
-    }
+ 
 
         public String getUsername() {
         return this.username;
@@ -86,30 +122,8 @@ public abstract class Users implements Serializable {
         this.email = email;
     }
 
-        public String getFirstname() {
-        return this.firstname;
-    }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-        public String getLastname() {
-        return this.lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-        public Date getBirthday() {
-        return this.birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
+  
         public String getAddress() {
         return this.address;
     }
@@ -133,5 +147,14 @@ public abstract class Users implements Serializable {
     public void setBanned(Boolean banned) {
         this.banned = banned;
     }
+
+
+
+
+
+	public Users() {
+	}
+	
+    
 
     }

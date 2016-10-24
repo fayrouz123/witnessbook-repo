@@ -13,7 +13,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IWitnessServiceRemote;
 
 public class WitnessDelagate {
 
-	private static IWitnessServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/WitnessService!tn.esprit.sigma.witnessbook.interfaces.IWitnessServiceRemote";
 	
 	private static IWitnessServiceRemote getProxy() {

@@ -6,8 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="750.0" style="-fx-background-color: GREY;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="users.SignUpController">
    <children>
       <Label layoutX="319.0" layoutY="91.0" prefHeight="44.0" prefWidth="53.0" text="Sign up" />
       <Label layoutX="87.0" layoutY="230.0" prefHeight="17.0" prefWidth="68.0" text="Password" />
@@ -17,13 +16,13 @@
       <Label layoutX="99.0" layoutY="269.0" text="CIN" />
       <Label layoutX="86.0" layoutY="407.0" prefHeight="30.0" prefWidth="46.0" text="Email" />
       <Label layoutX="87.0" layoutY="189.0" text="Username" />
-      <TextField layoutX="178.0" layoutY="185.0" />
-      <TextField layoutX="178.0" layoutY="265.0" />
-      <TextField layoutX="178.0" layoutY="310.0" />
-      <TextField layoutX="178.0" layoutY="358.0" />
-      <TextField layoutX="178.0" layoutY="410.0" />
-      <TextField layoutX="178.0" layoutY="455.0" />
-      <PasswordField layoutX="178.0" layoutY="226.0" />
-      <Button layoutX="483.0" layoutY="508.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="102.0" text="Sign up" />
+      <TextField fx:id="u" layoutX="178.0" layoutY="185.0" />
+      <TextField fx:id="c" layoutX="178.0" layoutY="265.0" />
+      <TextField fx:id="f" layoutX="178.0" layoutY="310.0" />
+      <TextField fx:id="l" layoutX="178.0" layoutY="358.0" />
+      <TextField fx:id="e" layoutX="178.0" layoutY="410.0" />
+      <TextField fx:id="a" layoutX="178.0" layoutY="455.0" />
+      <PasswordField fx:id="p" layoutX="178.0" layoutY="226.0" />
+      <Button layoutX="451.0" layoutY="447.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="67.0" prefWidth="102.0" text="Sign up" />
    </children>
 </AnchorPane>

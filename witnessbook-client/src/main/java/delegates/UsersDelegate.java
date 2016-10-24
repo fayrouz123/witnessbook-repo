@@ -8,7 +8,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IUserServiceRemote;
 
 public class UsersDelegate {
 
-	private static IUserServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/UsersService!tn.esprit.sigma.witnessbook.interfaces.IUserServiceRemote";
 	
 	private static IUserServiceRemote getProxy() {

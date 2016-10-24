@@ -8,7 +8,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IModeratorServiceRemote;
 public class ModeratorDelegate {
 
 	
-	private static IModeratorServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/ModeratorService!tn.esprit.sigma.witnessbook.interfaces.IModeratorServiceRemote";
 	
 	private static IModeratorServiceRemote getProxy() {

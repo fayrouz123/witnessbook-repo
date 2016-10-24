@@ -8,7 +8,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IPostServiceRemote;
 
 public class PostDelegate {
 
-	private static IPostServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/PostService!tn.esprit.sigma.witnessbook.interfaces.IPostServiceRemote";
 	
 	private static IPostServiceRemote getProxy() {

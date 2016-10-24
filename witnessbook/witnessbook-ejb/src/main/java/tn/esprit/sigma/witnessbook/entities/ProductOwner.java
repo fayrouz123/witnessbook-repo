@@ -10,15 +10,37 @@ import javax.persistence.OneToMany;
 public class ProductOwner extends Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-    @OneToMany
-    private List<WitnessCard> witnessCards;
+	private String ProductName;
+   
+	
 
-    public List<WitnessCard> getWitnessCards() {
+
+	@OneToMany
+    private List<WitnessCard> witnessCards;
+	
+	
+
+    public ProductOwner(String username, String password, String email, String address, String avatar,
+			Boolean activated, Boolean banned, String productName) {
+		super(username, password, email, address, avatar, activated, banned);
+		ProductName = productName;
+	}
+
+	public String getProductName() {
+		return ProductName;
+	}
+
+	public void setProductName(String productName) {
+		ProductName = productName;
+	}
+
+	public List<WitnessCard> getWitnessCards() {
         return this.witnessCards;
     }
 
     public void setWitnessCards(List<WitnessCard> witnessCards) {
         this.witnessCards = witnessCards;
     }
+    
 
 }

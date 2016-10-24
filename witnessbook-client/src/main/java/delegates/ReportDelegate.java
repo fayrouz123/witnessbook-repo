@@ -8,7 +8,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IReportServiceRemote;
 
 public class ReportDelegate {
 
-	private static IReportServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/ReportService!tn.esprit.sigma.witnessbook.interfaces.IReportServiceRemote";
 	
 	private static IReportServiceRemote getProxy() {

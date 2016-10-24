@@ -8,7 +8,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IProductOwnerServiceRemote;
 
 public class ProductOwnerDelegate {
 
-	private static IProductOwnerServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/ProductOwnerService!tn.esprit.sigma.witnessbook.interfaces.IProductOwnerServiceRemote";
 	
 	private static IProductOwnerServiceRemote getProxy() {

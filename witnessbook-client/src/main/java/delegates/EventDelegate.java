@@ -10,7 +10,6 @@ import tn.esprit.sigma.witnessbook.interfaces.IEventServiceRemote;
 
 public class EventDelegate {
 
-	private static IEventServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/EventService!tn.esprit.sigma.witnessbook.interfaces.IEventServiceRemote";
 	
 	private static IEventServiceRemote getProxy() {
