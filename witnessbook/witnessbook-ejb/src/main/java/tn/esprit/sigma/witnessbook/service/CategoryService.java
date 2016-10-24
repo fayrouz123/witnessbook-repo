@@ -38,7 +38,6 @@ public class CategoryService extends AbstractService<Category> implements ICateg
     			Query query =em.createQuery(jpql);
     			
     			return query.getResultList();
-    			
     }
 
 }

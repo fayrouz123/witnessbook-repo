@@ -110,9 +110,9 @@ public class WitnessCardController {
 		 		
 		 	witnessCardCategory.setItems(options); */
 		
-		witnessCardCategory = new ComboBox<>();
+		//ObservableList<String> maliste = FXCollections.observableArrayList(CategoryDelegate.findname().toString());
 	 		
-		
+		//witnessCardCategory.setItems(maliste);
 		
 	  
 	   

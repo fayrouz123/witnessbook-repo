@@ -57,5 +57,10 @@ public class Category implements Serializable {
     public void setWitnessCards(List<WitnessCard> witnessCards) {
         this.witnessCards = witnessCards;
     }
+    
+    public String toString()
+    {
+    	return " "+name+" ";
+    }
 
 }
