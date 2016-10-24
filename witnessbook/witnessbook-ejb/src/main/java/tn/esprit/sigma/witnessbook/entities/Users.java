@@ -33,7 +33,7 @@ public  class Users implements Serializable {
     
     private String address;
     
-    public String avatar;
+    private String avatar;
 
     
     private Boolean activated;

@@ -22,4 +22,5 @@ public interface ICategoryServiceRemote {
 	List<Category> findRange(int startPosition, int size);
 
 	int count();
+    public List<Category> findAllCategoryName();
 }

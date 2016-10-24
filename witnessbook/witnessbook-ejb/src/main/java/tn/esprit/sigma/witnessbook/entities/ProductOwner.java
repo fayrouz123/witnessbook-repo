@@ -12,6 +12,8 @@ public class ProductOwner extends Users implements Serializable {
 
 	private String ProductName;
    
+	public ProductOwner() {
+	}
 	
 
 

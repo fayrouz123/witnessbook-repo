@@ -7,6 +7,7 @@ import tn.esprit.sigma.witnessbook.interfaces.ICategoryServiceRemote;
 
 public class CategoryDelegate {
 
+	private static ICategoryServiceRemote remote;
 	private static String jndiName = "witnessbook-ear/witnessbook-ejb/CategoryService!tn.esprit.sigma.witnessbook.interfaces.ICategoryServiceRemote";
 	
 	private static ICategoryServiceRemote getProxy() {
@@ -28,6 +29,9 @@ public class CategoryDelegate {
 	}
 	
 	
+	public static List<Category> findname(){
+		return getProxy().findAllCategoryName();
+	}
 	
 	public static Category find(int id){
 		return getProxy().find(id);
