@@ -19,6 +19,8 @@ public interface IWitnessCardServiceRemote {
 	List<WitnessCard> findAll();
 
 	List<WitnessCard> findRange(int startPosition, int size);
+	
+	public List<WitnessCard> SearchWC(String wc);
 
 	int count();
 }

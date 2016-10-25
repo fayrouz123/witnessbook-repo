@@ -25,6 +25,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -73,9 +77,25 @@ public class WitnessCardController {
 	private ImageView wcimageadded;
 	
 	
+	  @FXML
+	  private TableView<WitnessCard> WCTable;
+	  
+	 
+	  
+	  @FXML
+	    private TableColumn<WitnessCard, String> nomC;
+	  @FXML
+	    private TableColumn<WitnessCard, String> descriptionC;
+	  
+	  @FXML
+	    private TableColumn<WitnessCard, String> adresseC;
+
+	  @FXML
+	    private TableColumn<WitnessCard, String> categorieC;
 	
-	
-	
+	  @FXML
+	    private TableColumn<WitnessCard, String> imageC ;
+	  
 	@FXML
     void showcat(ActionEvent event) {
 
@@ -158,9 +178,53 @@ public class WitnessCardController {
 	}
 	
 	
+	@FXML
 	
+	void searchWC(ActionEvent event){
+		
+		
+    	String query = witnessCardSearchName.getText();
+    	List<WitnessCard> resultat = WitnessCardDelagate.SearchWC(query);
+    	 
+    	
+		 
+		 WCTable.getItems().clear();
+    	WCTable.setItems(FXCollections.observableArrayList(resultat));
+	}
+	
+	@FXML
+	 void initialize(){
+	
+		nomC.setCellValueFactory(new PropertyValueFactory("name"));
+		nomC.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		descriptionC.setCellValueFactory(new PropertyValueFactory("description"));
+		descriptionC.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		adresseC.setCellValueFactory(new PropertyValueFactory("address"));
+		adresseC.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		
+		categorieC.setCellValueFactory(new PropertyValueFactory("category"));
+		categorieC.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		
 
+		
+		imageC.setCellValueFactory(new PropertyValueFactory("attachment"));
+		imageC.setCellFactory(TextFieldTableCell.forTableColumn());
 	
+	}
+	
+@FXML
+	void showallWC(ActionEvent event){
+		
+		
+	ObservableList<WitnessCard> resultat =FXCollections.observableArrayList(WitnessCardDelagate.findAll());
+   	WCTable.getItems().clear();
+   	WCTable.setItems(FXCollections.observableArrayList(resultat));
+		
+	}
 	
 	
 	

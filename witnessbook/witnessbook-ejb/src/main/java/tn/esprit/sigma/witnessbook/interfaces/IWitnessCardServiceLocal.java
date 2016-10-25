@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
 
 @Local
@@ -19,6 +20,8 @@ public interface IWitnessCardServiceLocal {
 	List<WitnessCard> findAll();
 
 	List<WitnessCard> findRange(int startPosition, int size);
+	
+	public List<WitnessCard> SearchWC(String wc);
 
 	int count();
 

@@ -1,9 +1,12 @@
 package tn.esprit.sigma.witnessbook.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 //import javax.persistence.PersistenceContext;
 import tn.esprit.sigma.witnessbook.entities.WitnessCard;
@@ -27,5 +30,11 @@ public class WitnessCardService extends AbstractService<WitnessCard> implements 
     public WitnessCardService() {
         super(WitnessCard.class);
     }
+
+	@Override
+	public List<WitnessCard> SearchWC(String wc) {
+		Query query = em.createQuery("select w from witnesscard w where w.name like :Name").setParameter("Name","%" + wc + "%");
+		return query.getResultList();
+	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import tn.esprit.sigma.witnessbook.entities.Users;
+import tn.esprit.sigma.witnessbook.entities.WitnessCard;
 
 @Remote
 public interface IUserServiceRemote {
@@ -20,6 +21,8 @@ public interface IUserServiceRemote {
 	List<Users> findAll();
 
 	List<Users> findRange(int startPosition, int size);
+	
+	
 
 	int count();
 	public boolean userAuthentificate(Users user) ;

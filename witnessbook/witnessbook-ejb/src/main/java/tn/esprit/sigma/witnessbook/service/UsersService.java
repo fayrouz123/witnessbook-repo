@@ -1,5 +1,7 @@
 package tn.esprit.sigma.witnessbook.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -7,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import tn.esprit.sigma.witnessbook.entities.Users;
+import tn.esprit.sigma.witnessbook.entities.WitnessCard;
 import tn.esprit.sigma.witnessbook.interfaces.IUserServiceLocal;
 import tn.esprit.sigma.witnessbook.interfaces.IUserServiceRemote;
 import tn.esprit.sigma.witnessbook.service.AbstractService;
@@ -47,5 +50,8 @@ public class UsersService extends AbstractService<Users> implements IUserService
     public void createe(Users u) {
         getEntityManager().persist(u);
     }
+
+
+	
 
 }

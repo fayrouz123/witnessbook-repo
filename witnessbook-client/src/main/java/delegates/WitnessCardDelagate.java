@@ -36,6 +36,10 @@ public class WitnessCardDelagate {
 	public static WitnessCard find(int id){
 		return getProxy().find(id);
 	}
+	
+	public static List<WitnessCard> SearchWC(String wc){
+		return getProxy().SearchWC(wc);
+	}
 	}
 
 
